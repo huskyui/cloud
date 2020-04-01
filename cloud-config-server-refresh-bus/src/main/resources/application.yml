@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/huskyui/config-repo
+          search-paths: spring-cloud
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+server:
+  port: 12000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7000/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

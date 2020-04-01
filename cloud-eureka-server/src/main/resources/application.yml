@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 7000 # Server HTTP port.
+eureka:
+  instance:
+    hostname: localhost # eureka实例的hostname
+  client:
+    register-with-eureka: false # 指示当前实例是否应在eureka服务器上注册其信息以供发现
+    fetch-registry: false # 指示当前实例是否从eureka服务器获取注册表信息
+    service-url: # 映射map。映射关于eureka服务器的url列表，map的value值可以是单个url，也可以是以,分割符分割的多个url，修改之后生效时间将在下一个循环中，由eurekaServiceUrlPollIntervalSeconds指定
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

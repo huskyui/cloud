@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-client-refresh-cloud-bus
+  cloud:
+    bus:
+      trace:
+        enabled: true
+      enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+server:
+  port: 13000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
