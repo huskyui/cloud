@@ -1,26 +1,28 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 10000
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: neo_route
+#          uri: http://localhost:9000
+#          predicates:
+#            - Path=/**
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7000/eureka/
 spring:
-  application:
-    name: cloud-gateway
   cloud:
     gateway:
       discovery:
         locator:
           enabled: true
-#      routes: # 这边routes是一个数组，所以需要后面加个 -，这是yaml的语法
-#        - id: service_consumer
-#          uri: lb://eureka-consumer # 在注册中心的名字，如果是producer,就是lb://producer
-#          order: 0
-#          predicates:
-#            - Path=/consumer/test/** # 需要以=分割的字符串
-#          filters:
-#            - StripPrefix=2 #转发时，会去掉/consumer/test这两层,/consumer算一层，/test算一层
-#            - AddResponseHeader=X-Response-Default-Foo, Default-Bar # 设置返回请求头
-server:
-  port: 10000
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:7000/eureka/
-logging:
-  level:
-    org.springframework.cloud.gateway: debug
